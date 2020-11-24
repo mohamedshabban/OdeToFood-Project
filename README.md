@@ -1,2 +1,3 @@
 # OdeToFood-Project
-Add-Edit-Delete-Display Restaurant
+Add-Edit-Delete
+Display Restaurants
