@@ -1,0 +1,64 @@
+﻿@page
+@model OdeToFood.Pages.Restaurant.ListModel
+@{
+    ViewData["Title"] = "Restaurants";
+}
+<h1>Restaurant</h1>
+<div>@Model.Message</div>
+<div>@Model.Kranshy</div>
+
+<form  method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control"
+                   asp-for="SearchTerm"/>
+
+            <span class="btn-group">
+                <button class="btn btn-dark">
+                    <i class="glyphicon glyphicon-search"></i> Search
+                </button>
+            </span>
+        </div>
+    </div>
+</form>
+
+Content OF Restaurant
+<table class="table">
+    @foreach (var restaurant in @Model.Restaurants)
+    {
+        <tr>
+            <td>@restaurant.Name</td>
+            <td>@restaurant.Location</td>
+            <td>@restaurant.Cuisine</td>
+            <td>
+                <a class="btn btn-dark"
+                   asp-page="./Details" asp-route-restaurantId="@restaurant.Id">
+                    Details
+                </a>
+
+                <a class="btn btn-dark"
+                   asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">
+                    Edit
+                </a>
+                <a class="btn btn-dark"
+                   asp-page="./Delete" asp-route-restaurantId="@restaurant.Id">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+@*@foreach (var restaurant in Model.Restaurants)
+{
+    <partial name="_Summary" model="restaurant"/>
+}*@
+
+@*<br/>
+<br/>*@
+@*Requires restaurantId *@
+<a asp-page="./Edit" class="btn btn-dark">Add New</a>
+
+@section footer
+{
+    <div>@Model.Message</div>
+}
